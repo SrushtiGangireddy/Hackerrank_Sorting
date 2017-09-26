@@ -1,0 +1,78 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    
+
+    public static void insertIntoSorted(int[] ar) {
+        
+        int len = ar.length;
+        int k = ar[len-1];
+        
+        boolean inserted = false;
+        
+        for(int i=len-2;i>=0;i--){
+            
+            if(ar[i] > k){
+                
+                ar[i+1] = ar[i];
+                
+                for(Integer a:ar){
+                    System.out.print(a+" ");
+                }System.out.println();
+                
+            }else if(ar[i] < k){
+                
+                ar[i+1] = k;
+                inserted = true;
+                for(Integer a:ar){
+                    System.out.print(a+" ");
+                }System.out.println();
+                break;
+            }
+            
+            
+        }
+        
+        
+        if(!inserted){
+            
+            if(ar[0] >= k){
+                ar[0] = k;
+            }
+            
+            for(Integer a:ar){
+                    System.out.print(a+" ");
+                }System.out.println();
+            
+        }
+        
+        
+        
+    }
+    
+    
+/* Tail starts here */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int s = in.nextInt();
+        int[] ar = new int[s];
+        for(int i=0;i<s;i++){
+            ar[i]=in.nextInt(); 
+        }
+        insertIntoSorted(ar);
+    }
+    
+    
+    private static void printArray(int[] ar) {
+        for(int n: ar){
+            System.out.print(n+" ");
+        }
+        System.out.println("");
+    }
+}
+ 
