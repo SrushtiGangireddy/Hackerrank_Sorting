@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        
+        TreeMap<Integer,ArrayList<String>> update = new TreeMap<Integer,ArrayList<String>>();
+        int counterIndex = 0;
+            int size = 0;
+        
+        TreeSet<String> toPrint = new TreeSet<String>();
+        int mid = n/2;
+        
+        
+        
+        for(int i=0;i<n;i++){
+            
+            int num = sc.nextInt();
+            String word = sc.next();
+            
+            int counter = 0;
+            
+            if(i < mid){
+              
+            if(update.containsKey(num)){
+               
+                ArrayList<String> words = (ArrayList<String>)update.get(num);
+                words.add("-");
+                update.put(num,words);
+            }else{
+                ArrayList<String> words = new ArrayList<String>();
+                words.add("-");
+                update.put(num,words);
+            }
+            
+        }else if(i >= mid){
+                if(update.containsKey(num)){
+               
+                ArrayList<String> words = (ArrayList<String>)update.get(num);
+                words.add(word);
+                update.put(num,words);
+            }else{
+                ArrayList<String> words = new ArrayList<String>();
+                words.add(word);
+                update.put(num,words);
+            }
+            }
+        }
+        
+      //  System.out.println(toPrint);
+        
+        Iterator it = update.entrySet().iterator();
+        while(it.hasNext()){
+            
+            Map.Entry pair = (Map.Entry)it.next();
+            
+            int key = (Integer)pair.getKey();
+            ArrayList<String> vals = (ArrayList<String>)pair.getValue();
+            
+            for(String val:vals){
+              System.out.print(val+" ");
+            }
+            
+        } 
+        
+    //    System.out.println(update);
+        
+        
+        
+        
+    }
+}
